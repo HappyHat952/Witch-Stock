@@ -7,6 +7,7 @@ import './Neighborhood.css';
 
 function Neighborhood () {
     return (    
+        <>
     <div className="neighborhood">
         <div className ="home">
             <Link to="/home"><img src="../src/assets/House.PNG"></img></Link>
