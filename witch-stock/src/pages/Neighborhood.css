@@ -1,10 +1,46 @@
 .neighborhood {
     background-image: url("../assets/Neighborhood_Paths.PNG");
     background-position: center;
-    background-size: 190vh;
+    background-size: contain;
+    margin: 0px;
+
+    /*grid-template-columns: auto auto auto auto auto auto;
+    grid-template-rows: auto auto auto auto auto auto;*/
+
+}
+
+img {
+    position: relative;
+    height: 30vh;
+    
 }
 
 .BondHouse {
-    height: 28vh;
-    margin-top: 22vh;
+    top: -10vh;
+    left: 8vw;
+}
+
+.StockHouse {
+    top: -20vh;
+    left: 16vw;
+}
+
+.ETFHouse {
+    top: -10vh;
+    left: 25vw;
+}
+
+.MyHouse {
+    top: 25vh;
+    left: -16vw;
+}
+
+.CommodityHouse {
+    top: 32vh;
+    left: -61vw;
+}
+
+.CdHouse {
+    top: 4vh;
+    left: 30vw;
 }
