@@ -1,12 +1,6 @@
 import { useParams, useNavigate} from 'react-router-dom';
 import {useState, useEffect} from 'react';
 // import reactImage from '../../assets/images/react.svg';
-import jamesbond from '../../assets/images/characters/JamesBond.PNG';
-import jackStock from '../../assets/images/characters/jackandthebeanStock.PNG';
-import commoFiona from '../../assets/images/characters/CommodityFarmerFiona.PNG';
-import redEFPMerchant from '../../assets/images/characters/RedMerchant.PNG';
-import rapunzelCD from '../../assets/images/characters/CDRapunzel.PNG';
-import Menubar from '../../component/menubar/menubar';
 import {BOND_ID, CD_ID, STOCK_ID, ETF_ID, COMMO_ID, addToken, clearStorage, getCashValue, getAssetInfoID} from '../../utils/localStorage';
 
 
