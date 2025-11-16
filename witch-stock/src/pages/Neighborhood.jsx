@@ -1,8 +1,13 @@
+import { Link } from 'react-router-dom';
+import './Neighborhood.css';
 
 function Neighborhood () {
     return (
     <>
-    <p>neighborhood</p>
+    <body className="neighborhood">
+        <p>neighborhood</p>
+        <Link to="/Person/dkjs"><img className="BondHouse" src="../src/assets/House.PNG"></img></Link>
+    </body>
     </>
     );
 }

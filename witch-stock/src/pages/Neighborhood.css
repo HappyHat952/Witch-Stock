@@ -1,0 +1,10 @@
+.neighborhood {
+    background-image: url("../assets/Neighborhood_Paths.PNG");
+    background-position: center;
+    background-size: 190vh;
+}
+
+.BondHouse {
+    height: 28vh;
+    margin-top: 22vh;
+}
