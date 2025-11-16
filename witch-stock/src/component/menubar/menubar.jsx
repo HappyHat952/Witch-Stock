@@ -8,13 +8,13 @@ export default function Menubar({ cash, tokens, onOpenPhonebook, className }) {
         display: "flex",
         gap: 10,
         alignItems: "center",
-        background: "rgba(0,0,0,0.6)",
+        background: "rgba(30, 5, 48, 0.9)",
         color: "#fff",
         padding: "8px 12px",
         borderRadius: 8,
         boxShadow: "0 6px 18px rgba(0,0,0,0.35)",
         zIndex: 1000,
-        fontSize: 14,
+        fontSize: 30,
         fontFamily: "Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial",
     };
 

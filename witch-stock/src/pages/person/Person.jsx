@@ -1,7 +1,14 @@
 import { useParams, useNavigate} from 'react-router-dom';
 import {useState, useEffect} from 'react';
+import Menubar from '../../component/menubar/menubar';
 // import reactImage from '../../assets/images/react.svg';
+import rapunzelCD from '../../assets/images/characters/CDRapunzel.PNG';
+import jackStock from '../../assets/images/characters/JackandthebeanStock.PNG';
+import jamesbond from '../../assets/images/characters/JamesBond.PNG';
+import commoFiona from '../../assets/images/characters/CommodityFarmerFiona.PNG';
+import redEFPMerchant from '../../assets/images/characters/RedMerchant.PNG';
 import {BOND_ID, CD_ID, STOCK_ID, ETF_ID, COMMO_ID, addToken, clearStorage, getCashValue, getAssetInfoID} from '../../utils/localStorage';
+import "./Person.css"
 
 
 function Person () {
@@ -16,7 +23,7 @@ function Person () {
     }, 
     {
         "id" : STOCK_ID,
-        "name" : "Jack in the Beanstock",
+        "name" : "Jack and the Bean Stock",
         "desc":"Deals with Jack and the BeanStock can win you a fortune or lose your fortune entirely! Take caution… Jack has a business of selling magical items he finds after climbing the BeanStock. You can buy shares of Jack’s BeanStock company so that when Jack has good business, your share of the BeanStock rises in value. However, every business has bad days, so you never know when your share of the BeanStock could come crashing down.",
     },
     {
@@ -40,7 +47,7 @@ function Person () {
     const [data, setData] = useState({id: "id", name: "name default", imgSrc: "img" });
     const [img, setImg] = useState(rapunzelCD);
     const [cash, setCash] = useState(getCashValue());
-    const reference = useState(getAssetInfoID());
+    const [reference, setReference ]= useState(getAssetInfoID(id));
 
     useEffect(() => {
     const fetchData = async () => {
@@ -48,6 +55,7 @@ function Person () {
         console.log(id);
         const jsonData = characters.filter(item => item["id"] === id)[0];
         setData(()=> jsonData); 
+        setReference(()=> getAssetInfoID(id))
         if (jsonData.id == STOCK_ID) {
             setImg(()=>jackStock);
         }
@@ -86,9 +94,17 @@ function Person () {
     <img src = {img}/> 
     <div className = "right-side">
       <h1>{data.name}</h1>
-      <p>desc: {data.desc} </p>
-      <button onClick = {handleBuy}>buy</button>
-      <button onClick = {handleNoBuy}>Street</button>
+      <p className="desc">{data.desc} </p>
+      <div className = "overview">
+            <h3>Stats for {data.name}'s tokens: </h3>
+            <p>{reference.gainPercent}% chance of +{reference.gainValue}</p>
+            <p>{reference.losePercent}% chance of -{reference.loseValue}</p>
+      </div>
+      <div className="buttonHolder">
+        <button onClick = {handleBuy}>buy</button>
+        <button onClick = {handleNoBuy}>Street</button>
+      </div>
+      
     </div>
     </>
     );

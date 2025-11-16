@@ -30,12 +30,12 @@ function Home () {
 
     return (
     <>
-    <button onClick = {()=>{clearStorage();setNewDay(prev => !prev);}}>clear</button>
-      <button onClick={() => {
+    <button onClick = {()=>{clearStorage();setNewDay(prev => !prev);}}>start over</button>
+      <button className ="NextDay" onClick={() => {
         setNewDay(prev => !prev);
         nextDay();
       }}> Next Day </button>
-      <button onClick={() => navigate("/")}>street</button>
+      <button onClick={() => navigate("/")}>back to neighborhood</button>
       <Menubar cash = {cashValue} tokens = {tokens} className = "menubar"></Menubar>
       <div className="shelves">
           {tokenRef.map((token) => (

@@ -1,0 +1,27 @@
+body{
+    background-color: rgb(98, 128, 226);
+}
+
+.desc {
+    padding: 5vh;
+    font-size: 20px;
+}
+
+.right-side {
+    background-color: green;
+    padding-top: 5vh;
+    box-sizing: border-box;
+}
+
+.buttonHolder {
+    padding: 3vh;
+}
+
+button {
+    font-size: 20px;
+}
+
+.overview {
+    margin: auto;
+    width: 50vh;
+}
