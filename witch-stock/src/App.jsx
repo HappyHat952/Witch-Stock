@@ -1,6 +1,6 @@
 import './App.css'
 import {BrowserRouter, Routes, Route, Link} from 'react-router-dom'
-import Neighborhood from './pages/Neighborhood'
+import Neighborhood from './pages/neighborhood/Neighborhood'
 import Home from './pages/Home'
 import Person from './pages/person/Person'
 import TokenView from './pages/TokenView'

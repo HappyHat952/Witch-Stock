@@ -6,16 +6,16 @@ export const COMMO_ID = "commodities";
 
 export const initialCash = 1000;
 
-const tokenRef = [
+export const tokenRef = [
   {
     id: BOND_ID,
     losePercent: 0,
     loseValue:0,
     gainPercent: 100,
-    gainValue: 3,
+    gainValue: 6,
     immediatePay: true,
     buyPrice: 500,
-    countDown: 10,
+    countDown: 3,
   },
   { 
     id: CD_ID,
@@ -39,9 +39,9 @@ const tokenRef = [
   },
   {
     id: ETF_ID,
-    losePercent: 8,
+    losePercent: 10,
     loseValue: 10,
-    gainPercent: 90,
+    gainPercent: 85,
     gainValue: 2,
     immediatePay: false,
     buyPrice: 500,
@@ -72,8 +72,15 @@ export const addToken = (tokenId) => {
     try{
         const tokenStr = localStorage.getItem("tokens")
         const tokenList =  tokenStr ? JSON.parse(tokenStr) : [];
+        const cashValueStr = localStorage.getItem("cash");
+        let cashValue = cashValueStr ?  JSON.parse(cashValueStr) : initialCash;
+
         if (tokenId==BOND_ID || tokenId==CD_ID|| tokenId==STOCK_ID|| tokenId==ETF_ID|| tokenId==COMMO_ID){
           const ref = tokenRef.filter(item => item["id"] === tokenId)[0];
+
+          if (cashValue>=ref.buyPrice)
+          {
+            cashValue -= ref.buyPrice;
           console.log("reference: "+JSON.stringify(ref));
           const tokenItem = {
             id: tokenId,
@@ -83,10 +90,58 @@ export const addToken = (tokenId) => {
           tokenList.push(tokenItem);
           console.log("added new", tokenId, "now list is", JSON.stringify(tokenList));
           localStorage.setItem("tokens", JSON.stringify(tokenList));
+          localStorage.setItem("cash", cashValue);
+        }
        
       }
     }catch (error) {
         console.error("Error setting item in local storage:", error);
+    }
+}
+
+export const getTokensOfAssetType = (tokenId) => {
+  try{
+    const tokenStr = localStorage.getItem("tokens");
+    const tokenList =  tokenStr ? JSON.parse(tokenStr) : [];
+    // const specificList = tokenList.filter((item) => item.id === tokenId);
+
+    const specificList = [];
+
+    tokenList.map((token,index)=>{
+      if(token.id == tokenId){
+        const newToken = {...token, idx: index}
+        specificList.push(newToken);
+      }
+    })
+
+    return specificList;
+
+  }catch (error ){
+    console.error("Error setting item in local storage:", error);
+  }
+}
+
+export const sellAssetIndexId = (indexId) => {
+    try {
+      const idx = Number(indexId);
+      if (Number.isNaN(idx)) return;
+
+      const tokenStr = localStorage.getItem("tokens");
+      const tokenList = tokenStr ? JSON.parse(tokenStr) : [];
+
+      if (idx < 0 || idx >= tokenList.length) return;
+
+      const [removed] = tokenList.splice(idx, 1);
+      const removedValue = removed && removed.currValue ? Number(removed.currValue) : 0;
+
+      const cashStr = localStorage.getItem("cash");
+      let cash = cashStr ? JSON.parse(cashStr) : initialCash;
+      cash = (typeof cash === "number" ? cash : Number(cash || 0)) + (isNaN(removedValue) ? 0 : removedValue);
+
+      localStorage.setItem("tokens", JSON.stringify(tokenList));
+      localStorage.setItem("cash", cash);
+    } catch (error) {
+      console.error("Error selling asset by index:", error);
     }
 }
 
@@ -131,6 +186,10 @@ export const nextDay = () => {
   }catch (error) {
     console.error("Error setting item in local storage:", error)
   }
+}
+
+export const getAssetInfoID = (tokenId) => {
+  return  tokenRef.filter(item => item["id"] === tokenId)[0];
 }
 
 export const getCashValue = () => {
