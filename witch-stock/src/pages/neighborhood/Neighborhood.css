@@ -1,0 +1,74 @@
+
+.neighborhood {
+    background-image: url("../../assets/Neighborhood.PNG");
+    background-position: center;
+    background-size: cover;
+    margin: 0px;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    /* min-height: 100vh;
+    min-width: 100vw; */
+
+    /*grid-template-columns: auto auto auto auto auto auto;
+    grid-template-rows: auto auto auto auto auto auto;*/
+
+}
+
+img {
+    position: relative;
+    height: 30vh;
+    
+}
+
+.houses {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto;
+    align-self:flex-end;
+    padding: 20px;
+}
+
+a {
+    width: 25vw;
+    height: auto;
+    /* padding: 20px; */
+    /* border: 1px red solid  */
+
+}
+.person {
+    z-index: 1;
+}
+.BondHouse {
+    /* position: relative;
+    z-index: 0; */
+}
+
+.StockHouse {
+    /* top: 10vh;
+    left: 3vw; */
+}
+
+.ETFHouse {
+    /* top: 10vh;
+    left: 25vw; */
+}
+
+.MyHouse {
+    /* top: 25vh;
+    left: -16vw; */
+}
+
+.CommodityHouse {
+    /* top: 32vh;
+    left: -61vw; */
+    
+}
+
+.CdHouse {
+    /* top: 4vh;
+    left: 30vw; */
+    
+}

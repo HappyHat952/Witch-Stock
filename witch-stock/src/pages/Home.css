@@ -1,0 +1,10 @@
+.shelves{
+    display:flex;
+    flex-direction:column;
+    background-image: url("../assets/Shelf.PNG");
+    background-position: center;
+    background-size:cover;
+    background-repeat: no-repeat;
+    min-width:600px;
+    padding: 30px 30px;
+}

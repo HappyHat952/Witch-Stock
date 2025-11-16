@@ -1,0 +1,13 @@
+{
+    "characters" :[
+    {
+    "name" : "jamesbond",
+    "img" : "",
+    "risk-100": 40
+}, {
+     "name" : "stocktoken",
+    "img" : "",
+    "risk-100": 50
+}
+    ]
+}
